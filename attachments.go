@@ -28,4 +28,24 @@ type Attachment struct {
 
 	Fields     []AttachmentField `json:"fields,omitempty"`
 	MarkdownIn []string          `json:"mrkdwn_in,omitempty"`
+
+	// interactive buttons
+	CallbackID string   `json:"callback_id,omitempty"`
+	Actions    []Action `json:"actions,omitempty"`
+}
+
+type Action struct {
+	Name    string         `json:"name"`
+	Text    string         `json:"text"`
+	Type    string         `json:"type"`
+	Value   string         `json:"value"`
+	Style   string         `json:"style,omitempty"`
+	Confirm *ActionConfirm `json:"confirm,omitempty"`
+}
+
+type ActionConfirm struct {
+	Title       string `json:"title"`
+	Text        string `json:"text"`
+	OkText      string `json:"ok_text"`
+	DismissText string `json:"dismiss_text"`
 }
